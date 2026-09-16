@@ -1,0 +1,283 @@
+/* ============================================
+   Codificador & Decodificador — Estilos
+   Paleta: Azul, Rojo y Blanco
+   ============================================ */
+
+:root {
+  /* Paleta cromática */
+  --azul-fundo: #0f172a;       /* Azul marino muy oscuro para el fondo general */
+  --azul-card: #1e293b;        /* Azul medianoche para las tarjetas */
+  --azul-borde: #334155;       /* Azul grisáceo para bordes suaves */
+  --rojo-primario: #dc2626;    /* Rojo vivo para detalles y elementos destacados */
+  --rojo-hover: #b91c1c;       /* Rojo más oscuro para estados hover */
+  --blanco: #ffffff;           /* Blanco puro para textos y contrastes */
+  --gris-claro: #cbd5e1;       /* Gris claro para textos secundarios */
+  --verde-ok: #22c55e;         /* Verde suave para confirmación de texto válido */
+  --rojo-error: #f87171;       /* Rojo claro para avisos de error */
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  min-height: 100vh;
+  background: var(--azul-fundo);
+  font-family: 'Chivo', system-ui, -apple-system, sans-serif;
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px 48px;
+}
+
+/* ---------- Encabezado ---------- */
+header { 
+  text-align: center; 
+  margin-bottom: 28px; 
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rojo-primario);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 6vw, 48px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+header p { 
+  color: var(--gris-claro); 
+  margin-top: 8px; 
+  font-size: 15px; 
+}
+
+/* ---------- Tabla de reglas ---------- */
+main {
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.regras {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.regra {
+  background: var(--azul-card);
+  border: 1px solid var(--azul-borde);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: var(--gris-claro);
+}
+
+.regra b { color: var(--blanco); }
+.regra span { color: var(--rojo-primario); font-weight: 700; }
+
+/* ---------- Control de modo ---------- */
+.modo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modo-label { 
+  color: var(--gris-claro); 
+  transition: color 0.2s; 
+}
+
+.modo-label.ativo { 
+  color: var(--blanco); 
+}
+
+.botao-inverter {
+  background: var(--rojo-primario);
+  color: var(--blanco);
+  border: none;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: transform 0.25s ease, background-color 0.2s ease;
+  line-height: 1;
+}
+
+.botao-inverter:hover { 
+  transform: rotate(180deg);
+  background: var(--rojo-hover);
+}
+
+.botao-inverter:focus-visible { 
+  outline: 3px solid var(--blanco); 
+  outline-offset: 2px; 
+}
+
+/* ---------- Paneles de entrada y salida ---------- */
+.paineis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .paineis { grid-template-columns: 1fr; }
+}
+
+.painel {
+  min-height: 240px;
+  width: 100%;
+  background: var(--azul-card);
+  border: 1px solid var(--azul-borde);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: stretch;  */
+  justify-content: flex-start; /* Fuerza a que todo empiece arriba */
+}
+
+.painel h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gris-claro);
+  margin-bottom: 12px;
+}
+
+textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  resize: none;
+  color: var(--blanco);
+  font-family: 'Chivo', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  outline: none;
+}
+
+textarea::placeholder { 
+  color: #64748b; 
+}
+
+.saida {
+  font-size: 18px;
+  text-align: left;
+  display: block;
+  word-wrap: break-word;
+  text-wrap: wrap;
+}
+
+/* Los spans de código y vacíos deben fluir como texto */
+.saida span,
+.saida .vazio,
+.saida .cod {
+  display: inline; 
+  color: inherit;
+}
+
+.saida .cod {
+  color: var(--rojo-primario);
+  font-weight: 700;
+}
+
+.saida .vazio {
+  color: #64748b;
+}
+
+/* ---------- Mensajes y Botones de Acción ---------- */
+.aviso {
+  margin-top: 14px;
+  font-size: 14px;
+  min-height: 20px;
+  color: var(--rojo-error);
+}
+
+.aviso.ok { 
+  color: var(--verde-ok); 
+}
+
+.acoes {
+  margin-top: auto; /* IMPORTANTE: Empuja los botones al fondo de la tarjeta */
+  padding-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.botao {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.botao:focus-visible { 
+  outline: 3px solid var(--blanco); 
+  outline-offset: 2px; 
+}
+
+/* Botón copiar con estilo principal (rojo) */
+.botao-copiar { 
+  background: var(--rojo-primario); 
+  color: var(--blanco); 
+}
+
+.botao-copiar:hover { 
+  background: var(--rojo-hover); 
+}
+
+/* Botón limpiar con estilo secundario (borde gris) */
+.botao-limpar { 
+  background: transparent; 
+  color: var(--gris-claro); 
+  border: 1px solid var(--azul-borde); 
+}
+
+.botao-limpar:hover { 
+  background: var(--azul-borde);
+  color: var(--blanco);
+}
+
+/* ---------- Pie de página ---------- */
+footer {
+  margin-top: 32px;
+  color: var(--gris-claro);
+  font-size: 13px;
+  text-align: center;
+}
+
+footer b { 
+  color: var(--rojo-primario); 
+}
