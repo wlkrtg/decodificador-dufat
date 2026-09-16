@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codificador Dufat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 1. Encabezado de la página -->
+  <header>
+    <p class="eyebrow">Desafío de Lógica ● Toti</p>
+    <h1>Codificador Dufat</h1>
+    <p>Ingresa tu texto para transformar las vocales según las reglas.</p>
+  </header>
+
+  <!-- 2. Sección principal del encriptador -->
+  <main>
+
+    <!-- Reglas de referencia -->
+    <section class="regras" aria-label="Reglas de conversión">
+      <div class="regra"><b>e</b> → <span>enter</span></div>
+      <div class="regra"><b>i</b> → <span>imes</span></div>
+      <div class="regra"><b>a</b> → <span>ai</span></div>
+      <div class="regra"><b>o</b> → <span>ober</span></div>
+      <div class="regra"><b>u</b> → <span>ufat</span></div>
+    </section>
+
+    <!-- Control de cambio de modo -->
+    <div class="modo">
+      <span id="labelEsquerda" class="modo-label ativo">Codificar</span>
+      <button id="botaoInverter" class="botao-inverter" title="Invertir dirección" aria-label="Invertir dirección">⇄</button>
+      <span id="labelDireita" class="modo-label">Decodificar</span>
+    </div>
+
+    <!-- Paneles de Entrada y Salida -->
+    <div class="paineis">
+      
+      <!-- Entrada del usuario -->
+      <section class="painel">
+        <h2 id="tituloEntrada">Tú escribes</h2>
+        <textarea id="entrada" placeholder="Ejemplo: hola mundo" autofocus spellcheck="false"></textarea>
+        <div id="aviso" class="aviso"></div>
+      </section>
+
+      <!-- Salida del resultado -->
+      <section class="painel">
+        <h2>Traducción</h2>
+        <div id="saida" class="saida">
+          <span class="vazio">El resultado aparecerá aquí…</span>
+        </div>
+        <div class="acoes">
+          <button id="botaoCopiar" class="botao botao-copiar">Copiar</button>
+          <button id="botaoLimpar" class="botao botao-limpar">Limpiar</button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- 3. Pie de página -->
+  <footer>
+    <p>Reglas: letras minúsculas · sin acentos · sin caracteres especiales</p>
+    <p>Hecho con ❤️ por Walkiria Arteaga</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
